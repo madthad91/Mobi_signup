@@ -12,6 +12,8 @@
     <link href="stylesheets/project.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="stylesheets/mobid.css" media="screen" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <title>MobID</title>
   </head>
   
@@ -22,14 +24,17 @@
         <a class="brand" href="#"> <i class="icon icon-cloud"></i> Mobi Developers</a>
         <ul class="nav pull-right">
           <li class="dropdown">
-            <a class="dropdown-toggle sr-only" role="button" id="dropdownMenu1" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-			  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-			    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-			    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-			    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-			    <li role="presentation" class="divider"></li>
-			    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-			  </ul>
+            <a class="dropdown-toggle" id="dropdownMenu1" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+             <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="padding: 15px; padding-bottom: 0px;">
+              <!-- <form action="dropdown" method="post" accept-charset="UTF-8"> -->
+                <input id="user_username" style="margin-bottom: 15px;" type="text" name="user[username]" size="30" />
+                <input id="user_password" style="margin-bottom: 15px;" type="password" name="user[password]" size="30" />
+                <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+                <label class="string optional" for="user_remember_me"> Remember me</label>
+                <!-- The button below's onclick method is added via jquery. check the javascript code. -->
+                <button id="signInBtn" class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In"></button>
+               <!--  </form> -->
+            </div>
           </li>
         </ul>
       </div>
@@ -90,6 +95,26 @@
     <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
     <!--<script src="disable_bootstrap_propagation.js"></script>--> 
     <script src="js/signUp.js"></script>
+    <script>
+    //initializing a test DB named tada
+    Parse.initialize("WGj60IjSG3BkThHlb8VpXVYGqbvaSIQ6mXh9NQEU", "LYMRAuQzkCO6xs9bikggjgEOMf1FFmpCB7hYY7Zz");
+
+    $('#signInBtn').click(function(){
+      var tableClass = Parse.Object.extend("Members");
+      var tableInstance = new Parse.Query(tableClass);
+      var checkEmail = new Parse.Query("Members").equalTo("Email", $("#user_username").val());
+      var checkIfActive = new Parse.Query("Members").equalTo("active", "Y");
+      var mainQuery = Parse.Query.or(checkEmail, checkIfActive);
+      mainQuery.find({
+        success: function(results){
+          alert(results[0].get("Name"));
+          $.each(results, function(index, value){
+            alert(index + ": "+value.get("Name"));
+          })
+        }
+    });
+    });
+    </script>
   </body>
 
 </html>
