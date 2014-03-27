@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
-  
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Limelight|Flamenco|Federo|Yesteryear|Josefin Sans|Spinnaker|Sansita One|Handlee|Droid Sans|Oswald:400,300,700" media="screen" rel="stylesheet" type="text/css" />
@@ -15,57 +15,60 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <title>MobID</title>
-  </head>
-  
-  <body>
-    
+</head>
+
+<body>
+
     <div class="navbar navbar-static-top" id="nav-bar">
-      <div class="navbar-inner">
-        <a class="brand" href="#"> <i class="icon icon-cloud"></i> Mobi Developers</a>
-        <ul class="nav pull-right">
-          <li class="dropdown">
-            <a id="dropdownMenu1" class="dropdown-toggle" role="button"   data-toggle="dropdown">Sign In <strong classs="caret"></strong></a>
-             <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="padding: 15px; padding-bottom: 0px;">
-                <input id="user_email"  type="text"  placeholder="Email"/>
-                <input id="user_password" type="password" name="user[password]" placeholder="Password"/>
-                <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
-                <label class="string optional" for="user_remember_me"> Remember me</label>
-                <!-- The button below's onclick method is added via jquery. check the javascript code. -->
-                <button id="signInBtn" class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit">Sign In</button>
-                <br />
-                <br />
-            </div>
-          </li>
-        </ul>
-      </div>
+        <div class="navbar-inner">
+            <a class="brand" href="#">
+                <i class="icon icon-cloud"></i>Mobi Developers</a>
+            <ul class="nav pull-right">
+                <li class="dropdown">
+                    <a id="dropdownMenu1" class="dropdown-toggle" role="button" data-toggle="dropdown">Sign In
+                        <strong classs="caret"></strong>
+                    </a>
+                    <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="padding: 15px; padding-bottom: 0px;">
+                        <input id="user_email" type="text" placeholder="Email" />
+                        <!--<input id="user_password" type="password" name="user[password]" placeholder="Password" />
+                        <!--<input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
+                        <label class="string optional" for="user_remember_me">Remember me</label>-->
+                        <!-- The button below's onclick method is added via jquery. check the javascript code. -->
+                        <button id="signInBtn" class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit">Sign In</button>
+                        <br />
+                        <br />
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="container-fluid" id="hero-container">
-      <h1 class="heading pull-center" id="title">Mobi</h1>
-      <h2 class="heading" id="subtitle">I'd App That</h2>
-      <div class="row-fluid" id="signup-form-container">
-        <span class="span6 offset3">
-          <form class="pull-center" id="signup-form" action="">
-            <textarea id="bigName" name="memName" class="input-large pull-center" placeholder="Your Name"></textarea>
-          </form>
-        </span>
-      </div>
-      <div class="well pull-center"></div>
+        <h1 class="heading pull-center" id="title">Mobi</h1>
+        <h2 class="heading" id="subtitle">I'd App That</h2>
+        <div class="row-fluid" id="signup-form-container">
+            <span class="span6 offset3">
+                <form class="pull-center" id="signup-form" action="">
+                    <textarea id="bigName" name="memName" class="input-large pull-center" placeholder="Your Name"></textarea>
+                </form>
+            </span>
+        </div>
+        <div class="well pull-center"></div>
     </div>
     <div class="container-fluid">
-      <div class="well pull-center well-1" >
-        <h1 class="heading">Sign Up!</h1>
-          <input id="suname" class="textinput pull-center toggleFields" type="text" placeholder="Name" name="" disabled>
-          <input id="suutaid" class="textinput pull-center toggleFields" type="text" placeholder="UTA ID" name="" disabled>
-          <input id="suemail" class="textinput pull-center toggleFields" type="email" placeholder="Email" name="" disabled>
-          
-          <select id="suexperience" class="pull-center pull-center-1 toggleFields" name="" disabled>
-            <option value="Experience Level">Experience Level</option>
-            <option value="Member/Developer">Member/Developer</option>
-            <option value="App Releases">App Releases</option>
-            <option value="Student Org Services">Student Org Services</option>
-          </select>
+        <div class="well pull-center well-1">
+            <h1 class="heading">Sign Up!</h1>
+            <input id="suname" class="textinput pull-center toggleFields" type="text" placeholder="Name" name="" disabled>
+            <input id="suutaid" class="textinput pull-center toggleFields" type="text" placeholder="UTA ID" name="" disabled>
+            <input id="suemail" class="textinput pull-center toggleFields" type="email" placeholder="Email" name="" disabled>
 
-          <!--
+            <select id="suexperience" class="pull-center pull-center-1 toggleFields" name="" disabled>
+                <option value="Interest Level">Interest Level</option>
+                <option value="Member/Developer">Member/Developer</option>
+                <option value="App Releases">App Releases</option>
+                <option value="Student Org Services">Student Org Services</option>
+            </select>
+
+            <!--
           <div class="control-group">
             <label class="control-label">Interest Level:</label>
             <div class="controls">
@@ -84,47 +87,46 @@
             </div>
           </div>
 -->
-          <span class="span-1 span-2"></span>
-          <span class="span-1 span-3"></span>
-          <div class="form-actions pull-right">
-            <button onclick="signUp()" id="" class="btn btn-primary toggleFields" disabled>Save</button>
-            <button class="btn toggleFields" disabled>Cancel</button>
-          </div>
-      </div>
+            <span class="span-1 span-2"></span>
+            <span class="span-1 span-3"></span>
+            <div class="form-actions pull-right">
+                <button onclick="signUp()" id="" class="btn btn-primary toggleFields" disabled>Save</button>
+                <button class="btn toggleFields" disabled>Cancel</button>
+            </div>
+        </div>
     </div>
     <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
     <script src="js/disable_bootstrap_propagation.js"></script>
     <script src="js/signUp.js"></script>
     <script>
-    //initializing a test DB named tada
-    Parse.initialize("WGj60IjSG3BkThHlb8VpXVYGqbvaSIQ6mXh9NQEU", "LYMRAuQzkCO6xs9bikggjgEOMf1FFmpCB7hYY7Zz");
+        //initializing a test DB named tada
+        Parse.initialize("WGj60IjSG3BkThHlb8VpXVYGqbvaSIQ6mXh9NQEU", "LYMRAuQzkCO6xs9bikggjgEOMf1FFmpCB7hYY7Zz");
 
-    $('#signInBtn').click(function(){
+        $('#signInBtn').click(function() {
 
-      var tableClass = Parse.Object.extend("Members");
-      //var tableInstance = new Parse.Query(tableClass);
-      var checkEmail = new Parse.Query("Members").equalTo("Email", $("#user_email").val());
-      //var checkIfActive = new Parse.Query("Members").equalTo("active", "Y");
-      var mainQuery = checkEmail.equalTo("active", "Y");
+            var tableClass = Parse.Object.extend("Members");
+            //var tableInstance = new Parse.Query(tableClass);
+            var checkEmail = new Parse.Query("Members").equalTo("Email", $("#user_email").val());
+            //var checkIfActive = new Parse.Query("Members").equalTo("active", "Y");
+            var mainQuery = checkEmail.equalTo("active", "Y");
 
-      mainQuery.find({
+            mainQuery.find({
 
-        success: function(results){
+                success: function(results) {
 
-          $.each(results, function(index, value){
+                    $.each(results, function(index, value) {
 
-            $('#bigName').val(value.get("Name"));
+                        $('#bigName').val(value.get("Name"));
 
-            //enables the sign up form
-            $('.toggleFields').removeAttr("disabled");
+                        //enables the sign up form
+                        $('.toggleFields').removeAttr("disabled");
 
-          });
-        }
-      });
+                    });
+                }
+            });
 
-    });
-
+        });
     </script>
-  </body>
+</body>
 
 </html>
