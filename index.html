@@ -24,16 +24,16 @@
         <a class="brand" href="#"> <i class="icon icon-cloud"></i> Mobi Developers</a>
         <ul class="nav pull-right">
           <li class="dropdown">
-            <a class="dropdown-toggle" id="dropdownMenu1" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+            <a id="dropdownMenu1" class="dropdown-toggle" role="button"   data-toggle="dropdown">Sign In <strong classs="caret"></strong></a>
              <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="padding: 15px; padding-bottom: 0px;">
-              <!-- <form action="dropdown" method="post" accept-charset="UTF-8"> -->
-                <input id="user_username" style="margin-bottom: 15px;" type="text" name="user[username]" size="30" />
-                <input id="user_password" style="margin-bottom: 15px;" type="password" name="user[password]" size="30" />
+                <input id="user_email"  type="text"  placeholder="Email"/>
+                <input id="user_password" type="password" name="user[password]" placeholder="Password"/>
                 <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
                 <label class="string optional" for="user_remember_me"> Remember me</label>
                 <!-- The button below's onclick method is added via jquery. check the javascript code. -->
-                <button id="signInBtn" class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In"></button>
-               <!--  </form> -->
+                <button id="signInBtn" class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit">Sign In</button>
+                <br />
+                <br />
             </div>
           </li>
         </ul>
@@ -45,21 +45,21 @@
       <div class="row-fluid" id="signup-form-container">
         <span class="span6 offset3">
           <form class="pull-center" id="signup-form" action="">
-            <textarea name="memName" class="input-large pull-center" placeholder="Your Name"></textarea>
+            <textarea id="bigName" name="memName" class="input-large pull-center" placeholder="Your Name"></textarea>
           </form>
         </span>
       </div>
       <div class="well pull-center"></div>
     </div>
     <div class="container-fluid">
-      <div class="well pull-center well-1">
+      <div class="well pull-center well-1" >
         <h1 class="heading">Sign Up!</h1>
-          <input id="suname" class="textinput pull-center" type="text" placeholder="Name" name="">
-          <input id="suutaid" class="textinput pull-center" type="text" placeholder="UTA ID" name="">
-          <input id="suemail" class="textinput pull-center" type="email" placeholder="Email" name="">
+          <input id="suname" class="textinput pull-center toggleFields" type="text" placeholder="Name" name="" disabled>
+          <input id="suutaid" class="textinput pull-center toggleFields" type="text" placeholder="UTA ID" name="" disabled>
+          <input id="suemail" class="textinput pull-center toggleFields" type="email" placeholder="Email" name="" disabled>
           
-          <select class="pull-center pull-center-1" name="">
-            <option value="Interest Level">Interest Level</option>
+          <select id="suexperience" class="pull-center pull-center-1 toggleFields" name="" disabled>
+            <option value="Experience Level">Experience Level</option>
             <option value="Member/Developer">Member/Developer</option>
             <option value="App Releases">App Releases</option>
             <option value="Student Org Services">Student Org Services</option>
@@ -86,34 +86,44 @@
 -->
           <span class="span-1 span-2"></span>
           <span class="span-1 span-3"></span>
-        <div class="form-actions pull-right">
-          <button onclick="signUp()" class="btn btn-primary">Save</button>
-          <button class="btn">Cancel</button>
-        </div>
+          <div class="form-actions pull-right">
+            <button onclick="signUp()" id="" class="btn btn-primary toggleFields" disabled>Save</button>
+            <button class="btn toggleFields" disabled>Cancel</button>
+          </div>
       </div>
     </div>
     <script src="http://www.parsecdn.com/js/parse-1.2.12.min.js"></script>
-    <!--<script src="disable_bootstrap_propagation.js"></script>--> 
+    <script src="js/disable_bootstrap_propagation.js"></script>
     <script src="js/signUp.js"></script>
     <script>
     //initializing a test DB named tada
     Parse.initialize("WGj60IjSG3BkThHlb8VpXVYGqbvaSIQ6mXh9NQEU", "LYMRAuQzkCO6xs9bikggjgEOMf1FFmpCB7hYY7Zz");
 
     $('#signInBtn').click(function(){
+
       var tableClass = Parse.Object.extend("Members");
-      var tableInstance = new Parse.Query(tableClass);
-      var checkEmail = new Parse.Query("Members").equalTo("Email", $("#user_username").val());
-      var checkIfActive = new Parse.Query("Members").equalTo("active", "Y");
-      var mainQuery = Parse.Query.or(checkEmail, checkIfActive);
+      //var tableInstance = new Parse.Query(tableClass);
+      var checkEmail = new Parse.Query("Members").equalTo("Email", $("#user_email").val());
+      //var checkIfActive = new Parse.Query("Members").equalTo("active", "Y");
+      var mainQuery = checkEmail.equalTo("active", "Y");
+
       mainQuery.find({
+
         success: function(results){
-          alert(results[0].get("Name"));
+
           $.each(results, function(index, value){
-            alert(index + ": "+value.get("Name"));
-          })
+
+            $('#bigName').val(value.get("Name"));
+
+            //enables the sign up form
+            $('.toggleFields').removeAttr("disabled");
+
+          });
         }
+      });
+
     });
-    });
+
     </script>
   </body>
 
