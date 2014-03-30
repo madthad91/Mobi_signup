@@ -25,7 +25,6 @@ function signUp(){
 }
 
 function parse_dat_data(su_name,su_utaID,su_email){
-    
 
     //creates a parse object. TestObject is a table in the tada DB
     var Table = Parse.Object.extend("signup");
